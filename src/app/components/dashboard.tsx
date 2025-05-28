@@ -1,20 +1,28 @@
-import { LayoutDashboard } from 'lucide-react'
+"use client"
+
+import { Calculator, LayoutDashboard, Users } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import MenuItem from './menu-item'
 
 const MenuItems = [
     {
-        icon: <LayoutDashboard/>,
+        icon: LayoutDashboard,
         title: 'Dashboard',
         description: 'Data Overview',
-        path: '/dashboard'
-    ,}
+        path: '/dashboard/main'
+    },
     {
-        icon: <LayoutDashboard/>,
+        icon: Calculator ,
         title: 'Counter',
         description: 'Counter',
         path: '/dashboard/counter'
+    },
+    {
+        icon: Users  ,
+        title: 'Pokemons',
+        description: 'Pokemons Page',
+        path: '/dashboard/pokemons'
     }
 ]
 
@@ -43,11 +51,12 @@ export default function Dashboard() {
            <div id="nav" className="w-full px-6">
             {MenuItems.map(item => (
                 <MenuItem
+                key={item.path}
                 icon={item.icon}
                 title={item.title}
                 description={item.description}
                 path={item.path}
-           />
+            />
             ))}
            
             
