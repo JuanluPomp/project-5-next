@@ -1,6 +1,6 @@
 "use client"
 
-import { Calculator, LayoutDashboard, Users } from 'lucide-react'
+import { Calculator, Heart, LayoutDashboard, Users } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import MenuItem from './menu-item'
@@ -23,6 +23,12 @@ const MenuItems = [
         title: 'Pokemons',
         description: 'Pokemons Page',
         path: '/dashboard/pokemons'
+    },
+    {
+        icon: Heart  ,
+        title: 'Favorites',
+        description: 'Favorites Page',
+        path: '/dashboard/favorites'
     }
 ]
 

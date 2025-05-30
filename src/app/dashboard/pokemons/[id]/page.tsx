@@ -1,9 +1,18 @@
 
 import PokemonInfo from '@/features/pokemons/components/pokemon-info'
-import { TPokemonInfo } from '@/types'
-import { Metadata } from 'next'
+import { TPokemonInfo } from '@/features/pokemons/types'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import React from 'react'
+
+//esta es una funcion con el nombre reservado generateStaticMetadata, la cual genera un numero n de carpetas antes de que el usuario las 
+//pida o las requiera, anticipando acciones que la app normalmente las realiza en tiempo real, haciendolas en build time
+export async function generateStaticParams() {
+  const staticPokemonsPages = Array.from({length: 20}).map((v,i) => {
+    return {id: (i+1).toString()}
+  })
+  return staticPokemonsPages
+}
 
 export const generateMetadata = async ({params}: {params: Promise<{id: string}>}): Promise<Metadata> => {
   try {
@@ -24,7 +33,11 @@ export const generateMetadata = async ({params}: {params: Promise<{id: string}>}
 
 const getPokemonInfo = async (id: string): Promise<TPokemonInfo> => {
   try {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {cache: 'force-cache'})
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+      next: {
+        revalidate: 60 * 60 * 30 * 6 //revalidacion cada 6 meses
+      }
+    })
               .then(res => res.json())
               .then(data => data)
   const pokemonInfo = {

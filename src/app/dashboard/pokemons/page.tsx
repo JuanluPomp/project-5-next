@@ -1,5 +1,10 @@
 import PokemonCard from "@/features/pokemons/components/pokemon-card";
-import { PokemonUnique, ResPokemon } from "@/types";
+import { PokemonUnique, ResPokemon } from "@/features/pokemons/types";
+
+export const metadata = {
+    title: 'Pokemons Page',
+    description: 'here are all pokemons' 
+}
 
 const MAX_ITEMS = 20;
 const OFFSET = 0;
@@ -19,7 +24,11 @@ const getPokemons = async (): Promise<PokemonUnique[]> => {
 };
 export default async function PokemonsPage() {
   const pokemonsRes = await getPokemons();
-  console.log(pokemonsRes);
+  const loc = process.env.BASE_LOCAL_URL
+  const apiResponse = await fetch(`${loc}/api/pokemons`)
+                      .then(res => res.json())
+                      .then(data => data.message)
+  console.log(apiResponse)
   return (
     <div className=" flex flex-col items-center">
       <h1 className=" text-center text-3xl mt-10">Pokemons Page </h1>

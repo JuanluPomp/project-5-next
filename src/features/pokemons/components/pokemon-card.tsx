@@ -1,7 +1,9 @@
-import { PokemonUnique } from "@/types";
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { PokemonUnique } from "../types";
+import { Heart } from "lucide-react";
 
 export default function PokemonCard({ pokemon }: { pokemon: PokemonUnique }) {
   return (
@@ -15,8 +17,13 @@ export default function PokemonCard({ pokemon }: { pokemon: PokemonUnique }) {
           className=" max-w-24 max-h-24"
         />
         <Link
-        className=" bg-sky-500 rounded-md p-1 text-white font-bold max-h-full mt-2"
-        href={`/dashboard/pokemons/${pokemon.id}`}>Ver Informacion</Link>
+        className=" bg-sky-500 rounded-md p-1 text-white font-bold max-h-full mt-1"
+        href={`/dashboard/pokemon/${pokemon.name}`}>Ver Informacion</Link>
+        <button
+          className=" flex items-center text-sm mt-2"
+        ><Heart  
+        className=" cursor-pointer"
+        size={15}/>Add to favorites</button>
       </div>
   );
 }

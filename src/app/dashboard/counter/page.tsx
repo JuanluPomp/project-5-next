@@ -1,5 +1,5 @@
 
-import Counter from '@/app/components/counter'
+import Counter from '@/features/counter/components/counter'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

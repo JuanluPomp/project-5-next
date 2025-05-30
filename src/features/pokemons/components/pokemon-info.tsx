@@ -1,7 +1,7 @@
 
-import { TPokemonInfo } from '@/types'
 import Image from 'next/image'
 import React from 'react'
+import { TPokemonInfo } from '../types'
 
 interface PokemonInfoProps {
     pokemonInfo: TPokemonInfo
