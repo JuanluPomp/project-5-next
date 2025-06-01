@@ -1,11 +1,13 @@
-import counterReducer from '@/features/counter/slices/counter-slice'
+import counterReducer from '@/store/counter/counter-slice'
+import favoritesReducer from '@/store/favorites/favorites-slice'
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer
-  },
+    counter: counterReducer, 
+    favorites: favoritesReducer
+  }
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

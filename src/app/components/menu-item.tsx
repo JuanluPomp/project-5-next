@@ -14,7 +14,6 @@ interface MenuItemProps {
 export default function MenuItem({icon: Icon, title, description, path}: MenuItemProps) {
     const pathname = usePathname()
     const isItemActive = pathname === path
-    console.log(isItemActive)
     return (
         <Link href={path}
         className={`${isItemActive && 'bg-blue-800'} w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150`}>

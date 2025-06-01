@@ -1,6 +1,6 @@
 "use client"
 
-import { decrement, increment, initCounterState} from '@/features/counter/slices/counter-slice'
+import { decrement, increment, initCounterState} from '@/store/counter/counter-slice'
 import { RootState, useAppDispatch } from '@/store'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
@@ -16,7 +16,7 @@ export default function Counter() {
 
   useEffect(() => {
     getApiCounter().then(data => dispatch(initCounterState(data)))
-  }, [])
+  }, [dispatch])
 
   const handleClick = (e:  React.MouseEvent<HTMLButtonElement>) => {
     const target = e.currentTarget.name

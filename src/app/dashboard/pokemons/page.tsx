@@ -24,11 +24,6 @@ const getPokemons = async (): Promise<PokemonUnique[]> => {
 };
 export default async function PokemonsPage() {
   const pokemonsRes = await getPokemons();
-  const loc = process.env.BASE_LOCAL_URL
-  const apiResponse = await fetch(`${loc}/api/pokemons`)
-                      .then(res => res.json())
-                      .then(data => data.message)
-  console.log(apiResponse)
   return (
     <div className=" flex flex-col items-center">
       <h1 className=" text-center text-3xl mt-10">Pokemons Page </h1>
